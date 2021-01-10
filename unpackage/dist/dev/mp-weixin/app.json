@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/lesson/lesson"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#716AB8",
+    "backgroundColor": "#716AB8"
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap50.json"
+}

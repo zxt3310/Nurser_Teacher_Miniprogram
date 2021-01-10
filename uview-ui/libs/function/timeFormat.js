@@ -24,6 +24,7 @@ if (!String.prototype.padStart) {
 // 其他更多是格式化有如下:
 // yyyy:mm:dd|yyyy:mm|yyyy年mm月dd日|yyyy年mm月dd日 hh时MM分等,可自定义组合
 function timeFormat(dateTime = null, fmt = 'yyyy-mm-dd') {
+	let week = ["日","一","二","三","四","五","六"];
 	// 如果为null,则格式化当前时间
 	if (!dateTime) dateTime = Number(new Date());
 	// 如果dateTime长度为10或者13，则为秒和毫秒的时间戳，如果超过13位，则为其他的时间格式
@@ -36,7 +37,8 @@ function timeFormat(dateTime = null, fmt = 'yyyy-mm-dd') {
 		"d+": date.getDate().toString(), // 日
 		"h+": date.getHours().toString(), // 时
 		"M+": date.getMinutes().toString(), // 分
-		"s+": date.getSeconds().toString() // 秒
+		"s+": date.getSeconds().toString(), // 秒
+		"w": week[date.getDay()]//周
 		// 有其他格式化字符需求可以继续添加，必须转化成字符串
 	};
 	for (let k in opt) {

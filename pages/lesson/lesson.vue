@@ -23,7 +23,7 @@
 			active-color="#716AB8"
 			ref="tabs" 
 			:list="tablist"
-			:current="current"
+			:current="current" 
 			@change="tabChange"
 			:is-scroll="false"
 			bar-width="105"
@@ -31,15 +31,37 @@
 			</u-tabs-swiper>
 		</view>
 		<view class="">
-			<swiper :indicator-dots="false" :is-scroll="true" :autoplay="false" :current="swiperCurrent" @change="swiperChange">
-				<swiper-item>
+			<swiper style="height: 700upx;" :indicator-dots="false" :is-scroll="true" :autoplay="false" :current="swiperCurrent" @change="swiperChange">
+				<swiper-item >
 					<view class="swiper-item">
-						asdf
+						<view class="item" v-for="item in sen_lesson" :key="item.name">
+							<text>{{item.name}}</text>
+							<view>
+								教师指导
+							</view>
+							<view>
+								语言点
+							</view>
+							<view>
+								播放视频
+							</view>
+						</view>
 					</view>
 				</swiper-item>
 				<swiper-item>
 					<view class="swiper-item">
-						fewerwer
+						<view class="item" v-for="item in theme_lesson" :key="item.name">
+							<text>{{item.name}}</text>
+							<view>
+								教师指导
+							</view>
+							<view>
+								语言点
+							</view>
+							<view>
+								播放视频
+							</view>
+						</view>
 					</view>
 				</swiper-item>
 			</swiper>
@@ -94,7 +116,7 @@
 	}
 </script>
 
-<style>
+<style lang="scss">
 	.content {
 		display: flex;
 		flex-direction: column;
@@ -116,8 +138,22 @@
 	}
 	.swiper-item{
 		display: flex;
+		flex-direction: column;
 		flex: 1;
 		background-color: white;
 		padding: 20upx 40upx;
+	}
+	.item{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		color: #716AB8;
+		margin-bottom: 15upx;
+	}
+	.item view{
+		padding: 6upx 15upx;
+		border: solid #909399 2upx;
+		border-radius: 12upx;
 	}
 </style>

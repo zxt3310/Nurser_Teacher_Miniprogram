@@ -15,5 +15,8 @@
 <style lang="scss">
 	@import "uview-ui/index.scss";
 	@import "colorui/main.css";
+	page{
+		height: 100%;
+	}
 	/*每个页面公共css */
 </style>

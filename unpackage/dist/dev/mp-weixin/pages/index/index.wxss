@@ -1,0 +1,96 @@
+
+.content {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.logo {
+	height: 200rpx;
+	width: 200rpx;
+	margin-top: 200rpx;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50rpx;
+}
+.text-area {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+}
+.title {
+	font-size: 36rpx;
+	color: #8f8f94;
+}
+.header{
+	background-color: #716AB8;
+	padding: 20rpx 40rpx 40rpx 40rpx;
+	color: white;
+	-webkit-border-bottom-right-radius: 200rpx;
+	        border-bottom-right-radius: 200rpx;
+}
+.header image{
+	height: 100rpx;
+	width: 100rpx;
+	background-color: white;
+	-webkit-border-radius: 50rpx;
+	        border-radius: 50rpx;
+}
+.classItem{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	padding: 20rpx 70rpx;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+}
+.classItem image{
+	width: 80rpx;
+	height: 80rpx;
+	-webkit-border-radius: 40rpx;
+	        border-radius: 40rpx;
+}
+.line{
+	height: 10rpx;
+	background-color:#E7EBED;
+}
+.icon-func{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin-top: 20rpx;
+	padding: 30rpx;
+}
+.icon-func image{
+	width: 90rpx;
+	height: 90rpx;
+}
+.icon-func text{
+	font-size: 28rpx;
+	margin-top: 10rpx;
+}
+

@@ -9,7 +9,17 @@
 		{
 			"path":"pages/lesson/lesson"
 		}
-	],
+	    ,
+		{
+            "path" : "pages/Preview/Preview",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarBackgroundColor": "#716AB8",

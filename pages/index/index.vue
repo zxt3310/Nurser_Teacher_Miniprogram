@@ -11,7 +11,7 @@
 					    >个人资料</text>
 					</view>
 				</view>
-				<text class="u-font-sm">12月25日 星期五</text>
+				<text class="u-font-sm">{{today}}</text>
 			</view>
 			<view class="u-font-sm" style="margin-top: 30upx;">
 				保持微笑，用包容心对待每一位小朋友~
@@ -60,9 +60,11 @@
 </template>
 
 <script>
+	import timeFormat from "../../uview-ui/libs/function/timeFormat.js"
 	export default {
 		data() {
 			return {
+					today:"",
 					childClass:[
 						{
 							id:0,
@@ -79,6 +81,9 @@
 		},
 		onLoad() {
 			
+		},
+		onReady(){
+			this.today = timeFormat(Date.now(),"mm月dd日 星期w");
 		},
 		methods: {
 			prepareLesson(e){
