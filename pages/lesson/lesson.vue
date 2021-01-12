@@ -3,7 +3,7 @@
 		<view class="header">
 			<image src="../../static/Cat_in_love.png" mode="aspectFill"></image>
 			<view class="flex flex-direction justify-between margin-left-xl">
-				<view class="text-xl">幼1班</view>
+				<view class="text-xl">{{classInfo}}</view>
 				<view class="text-sm">学生人数10</view>
 				<view class="text-sm">当前进度 Level 1</view>
 			</view>
@@ -34,15 +34,15 @@
 			<swiper style="height: 700upx;" :indicator-dots="false" :is-scroll="true" :autoplay="false" :current="swiperCurrent" @change="swiperChange">
 				<swiper-item >
 					<view class="swiper-item">
-						<view class="item" v-for="item in sen_lesson" :key="item.name">
-							<text>{{item.name}}</text>
+						<view class="item" v-for="item in sen_lesson" :key="">
+							<text>{{item.course_name}}</text>
 							<view>
 								教师指导
 							</view>
 							<view>
 								语言点
 							</view>
-							<view>
+							<view @click="prepareLesson(item.play_list_id)">
 								播放视频
 							</view>
 						</view>
@@ -50,15 +50,15 @@
 				</swiper-item>
 				<swiper-item>
 					<view class="swiper-item">
-						<view class="item" v-for="item in theme_lesson" :key="item.name">
-							<text>{{item.name}}</text>
+						<view class="item" v-for="item in theme_lesson" :key="">
+							<text>{{item.course_name}}</text>
 							<view>
 								教师指导
 							</view>
 							<view>
 								语言点
 							</view>
-							<view>
+							<view @click="prepareLesson(item.play_list_id)">
 								播放视频
 							</view>
 						</view>
@@ -73,6 +73,10 @@
 	export default {
 		data() {
 			return {
+				//班级id
+				classId:0,
+				//班级信息
+				classInfo:{},
 				tablist:[
 					{name:"场景课程"},
 					{name:"主题课程"},
@@ -99,6 +103,17 @@
 			}
 		},
 		methods: {
+			getLesson(){
+				this.$u.get('/api/get_course',{
+					"campus_id":1,
+					"team_id":this.classId
+				}).then(e =>{
+					let lessonAry = e.data;
+					this.sen_lesson = lessonAry.filter((item => item.course_type == 1));
+					this.theme_lesson = lessonAry.filter((item =>item.course_type == 2));
+					this.classInfo = lessonAry[0].nickname;
+				});
+			},
 			tabChange(e){
 				this.current = e;
 				this.swiperCurrent = e;
@@ -108,10 +123,16 @@
 			},
 			swiperChange(e){
 				this.current = e.detail.current;
+			},
+			prepareLesson(play_list_id){
+				uni.navigateTo({
+					url:'../Preview/Preview?listid='+ play_list_id
+				})
 			}
 		},
 		onLoad(param) {
-			
+			this.classId = param.lesson;
+			this.getLesson();
 		}
 	}
 </script>
@@ -155,5 +176,12 @@
 		padding: 6upx 15upx;
 		border: solid #909399 2upx;
 		border-radius: 12upx;
+	}
+	.item text{
+		width: 18%;
+		text-align: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 </style>

@@ -35,15 +35,13 @@
 	background-color: #716AB8;
 	padding: 20rpx 40rpx 40rpx 40rpx;
 	color: white;
-	-webkit-border-bottom-right-radius: 200rpx;
-	        border-bottom-right-radius: 200rpx;
+	border-bottom-right-radius: 200rpx;
 }
 .header image{
 	height: 100rpx;
 	width: 100rpx;
 	background-color: white;
-	-webkit-border-radius: 50rpx;
-	        border-radius: 50rpx;
+	border-radius: 50rpx;
 }
 .classItem{
 	display: -webkit-box;
@@ -64,8 +62,7 @@
 .classItem image{
 	width: 80rpx;
 	height: 80rpx;
-	-webkit-border-radius: 40rpx;
-	        border-radius: 40rpx;
+	border-radius: 40rpx;
 }
 .line{
 	height: 10rpx;

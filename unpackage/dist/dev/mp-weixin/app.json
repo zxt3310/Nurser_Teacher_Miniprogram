@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/lesson/lesson"
+    "pages/lesson/lesson",
+    "pages/Preview/Preview"
   ],
   "subPackages": [],
   "window": {
@@ -10,5 +11,5 @@
     "backgroundColor": "#716AB8"
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap50.json"
+  "sitemapLocation": "sitemap11.json"
 }

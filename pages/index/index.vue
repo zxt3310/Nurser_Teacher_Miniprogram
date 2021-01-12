@@ -22,10 +22,10 @@
 			<view class="classItem" v-for="item in childClass" :key="item.id">
 				<view class="align-center">
 					<image src="../../static/logo.png" mode=""></image>
-					<view>{{item.className}}</view>
+					<view>{{item.nickname}}</view>
 				</view>
-				<view class="flex-direction align-center">
-					<view class="">{{item.prograss}}</view>
+				<view class="flex-direction align-center text-center">
+					<view class="">{{item.name}}</view>
 					<view class="text-sm">
 						课程进度
 					</view>
@@ -68,19 +68,19 @@
 					childClass:[
 						{
 							id:0,
-							className:"幼1班",
-							prograss:"Level 1",
+							nickname:"幼1班",
+							name:"Level 1",
 						},
 						{
 							id:1,
-							className:"幼2班",
-							prograss:"Level 2",
+							nickname:"幼2班",
+							name:"Level 2",
 						}
 					]
 				}
 		},
 		onLoad() {
-			
+			this.getClassInfo();
 		},
 		onReady(){
 			this.today = timeFormat(Date.now(),"mm月dd日 星期w");
@@ -90,6 +90,15 @@
 				uni.navigateTo({
 					url:"../lesson/lesson?lesson=" + e
 				})
+			},
+			getClassInfo(){
+				this.$u.get('/api/get_team',{
+					campus_id:1
+				}).then(e =>{
+					if(e.code == 0){
+						this.childClass = e.data;
+					}
+				});
 			}
 		}
 	}
