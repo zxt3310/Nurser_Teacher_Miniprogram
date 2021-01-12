@@ -4,8 +4,13 @@ video{
 }
 .swiper{
 	height: 400px;
+	width: 100%;
 }
 scroll-view{
 	height: 100%;
+}
+.line{
+	height: 2rpx;
+	background-color:#E7EBED;
 }
 

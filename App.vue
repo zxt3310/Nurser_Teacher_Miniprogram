@@ -14,7 +14,7 @@
 
 <style lang="scss">
 	@import "uview-ui/index.scss";
-	@import "colorui/main.css";
+	// @import "/colorui/main.css";
 	page{
 		height: 100%;
 	}

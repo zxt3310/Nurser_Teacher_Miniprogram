@@ -34,15 +34,15 @@
 			<swiper style="height: 700upx;" :indicator-dots="false" :is-scroll="true" :autoplay="false" :current="swiperCurrent" @change="swiperChange">
 				<swiper-item >
 					<view class="swiper-item">
-						<view class="item" v-for="item in sen_lesson" :key="">
+						<view class="item" v-for="(item,index) in sen_lesson" :key="index">
 							<text>{{item.course_name}}</text>
-							<view>
+							<view @click="prepareLesson(item.play_list_id,0)">
 								教师指导
 							</view>
-							<view>
+							<view @click="prepareLesson(item.play_list_id,1)">
 								语言点
 							</view>
-							<view @click="prepareLesson(item.play_list_id)">
+							<view @click="prepareLesson(item.play_list_id,2)">
 								播放视频
 							</view>
 						</view>
@@ -50,15 +50,15 @@
 				</swiper-item>
 				<swiper-item>
 					<view class="swiper-item">
-						<view class="item" v-for="item in theme_lesson" :key="">
+						<view class="item" v-for="(item,index) in theme_lesson" :key="index">
 							<text>{{item.course_name}}</text>
-							<view>
+							<view @click="prepareLesson(item.play_list_id,0)">
 								教师指导
 							</view>
-							<view>
+							<view @click="prepareLesson(item.play_list_id,1)">
 								语言点
 							</view>
-							<view @click="prepareLesson(item.play_list_id)">
+							<view @click="prepareLesson(item.play_list_id,2)">
 								播放视频
 							</view>
 						</view>
@@ -124,9 +124,9 @@
 			swiperChange(e){
 				this.current = e.detail.current;
 			},
-			prepareLesson(play_list_id){
+			prepareLesson(play_list_id,tabidx){
 				uni.navigateTo({
-					url:'../Preview/Preview?listid='+ play_list_id
+					url:'../Preview/Preview?listid='+ play_list_id + '&tabidx=' + tabidx
 				})
 			}
 		},
@@ -138,6 +138,7 @@
 </script>
 
 <style lang="scss">
+	@import "/colorui/main.css";
 	.content {
 		display: flex;
 		flex-direction: column;

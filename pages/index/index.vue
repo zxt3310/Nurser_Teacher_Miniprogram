@@ -105,6 +105,8 @@
 </script>
 
 <style>
+	
+		@import "/colorui/main.css";
 	.content {
 		display: flex;
 		flex-direction: column;
