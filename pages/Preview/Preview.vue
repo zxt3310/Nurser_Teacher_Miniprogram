@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<video :src="curVideo.url" :direction="90" autoplay="true" @ended="play">
+		<video  id="myVideo" :src="curVideo.url" :direction="90" autoplay="true" @ended="play" @error="playError" ref="myVideo">
 			<!-- <cover-image src="http://81.70.232.219/uploads/material_upload/video/1.13_现场老师讲解场景图片.png"></cover-image> -->
 		</video>
 		<view class="">
@@ -75,6 +75,7 @@
 				this.playlistId = param.listid;
 				this.current = parseInt(param.tabidx);
 				this.getVideoData();
+				console.log(this.playlistId);
 			},
 		methods: {
 			play(){
@@ -82,12 +83,20 @@
 					this.curVideo = this.videos.shift();
 				}
 			},
+			playError(e){
+				console.log(e);
+				
+				const videoRef = uni.createVideoContext('myVideo');
+				//videoRef.exitFullScreen();
+				videoRef.stop();
+			},
 			switchVideo(e){
 				let ary = e.detail.value.split('-');
 				let index_father = ary[0];
 				let index_child = ary[1];
 				let child = this.videoAry[index_father].play_groups;
 				let videos = child[index_child].plays;
+				let videos_nopic = videos.filter(item =>item.mime_type.indexOf('image') == -1);
 				this.videos = videos.slice();
 				this.play();
 			},

@@ -253,7 +253,7 @@ var _timeFormat = _interopRequireDefault(__webpack_require__(/*! ../../uview-ui/
 //
 //
 //
-var _default = { data: function data() {return { today: "", childClass: [{ id: 0, nickname: "幼1班", name: "Level 1" }, { id: 1, nickname: "幼2班", name: "Level 2" }] };}, onLoad: function onLoad() {this.getClassInfo();}, onReady: function onReady() {this.today = (0, _timeFormat.default)(Date.now(), "mm月dd日 星期w");}, methods: { prepareLesson: function prepareLesson(e) {uni.navigateTo({ url: "../lesson/lesson?lesson=" + e });}, getClassInfo: function getClassInfo() {var _this = this;this.$u.get('/api/get_team', { campus_id: 1 }).then(function (e) {if (e.code == 0) {_this.childClass = e.data;}});} } };exports.default = _default;
+var _default = { data: function data() {return { today: "", childClass: [{ id: 0, nickname: "幼1班", name: "Level 1" }, { id: 1, nickname: "幼2班", name: "Level 2" }] };}, onLoad: function onLoad() {this.getClassInfo();}, onReady: function onReady() {this.today = (0, _timeFormat.default)(Date.now(), "mm月dd日 星期w");}, methods: { prepareLesson: function prepareLesson(e) {uni.navigateTo({ url: "../lesson/lesson?lesson=" + e });}, getClassInfo: function getClassInfo() {var _this = this;this.$u.get('/api/get_team', { campus_id: 1 }).then(function (e) {if (e.code == 0) {_this.childClass = e.data;}});}, goToPhotos: function goToPhotos() {uni.navigateTo({ url: '../photos/photos?classes=' + JSON.stringify(this.childClass) });} } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

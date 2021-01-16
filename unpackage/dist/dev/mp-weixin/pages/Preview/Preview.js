@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uTabsSwiper: function() {
-      return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 72))
+      return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 80))
     }
   }
 } catch (e) {
@@ -153,7 +153,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
 //
 //
 //
@@ -230,6 +230,7 @@ var _default =
     this.playlistId = param.listid;
     this.current = parseInt(param.tabidx);
     this.getVideoData();
+    console.log(this.playlistId);
   },
   methods: {
     play: function play() {
@@ -237,12 +238,20 @@ var _default =
         this.curVideo = this.videos.shift();
       }
     },
+    playError: function playError(e) {
+      console.log(e);
+
+      var videoRef = uni.createVideoContext('myVideo');
+      //videoRef.exitFullScreen();
+      videoRef.stop();
+    },
     switchVideo: function switchVideo(e) {
       var ary = e.detail.value.split('-');
       var index_father = ary[0];
       var index_child = ary[1];
       var child = this.videoAry[index_father].play_groups;
       var videos = child[index_child].plays;
+      var videos_nopic = videos.filter(function (item) {return item.mime_type.indexOf('image') == -1;});
       this.videos = videos.slice();
       this.play();
     },
@@ -266,6 +275,7 @@ var _default =
 
       });
     } } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

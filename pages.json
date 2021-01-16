@@ -14,8 +14,16 @@
             "path" : "pages/Preview/Preview",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "课程",
                 "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/photos/photos",
+            "style" :                                                                                    
+            {
+				"navigationBarTitleText":"班级相册"
             }
             
         }

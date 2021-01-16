@@ -42,7 +42,7 @@
 		<view class="padding">
 			<text>实用功能</text>
 			<view class="u-flex justify-between">
-				<view class="icon-func">
+				<view class="icon-func" @click="goToPhotos">
 					<image src="../../static/photo.png" mode=""></image>
 					<text>相册</text>
 				</view>
@@ -99,14 +99,18 @@
 						this.childClass = e.data;
 					}
 				});
+			},
+			goToPhotos(){
+				uni.navigateTo({
+					url:'../photos/photos?classes=' + JSON.stringify(this.childClass)
+				})
 			}
 		}
 	}
 </script>
 
 <style>
-	
-		@import "/colorui/main.css";
+	@import "/colorui/main.css";
 	.content {
 		display: flex;
 		flex-direction: column;
