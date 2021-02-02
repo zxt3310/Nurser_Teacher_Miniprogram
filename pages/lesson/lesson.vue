@@ -104,9 +104,10 @@
 		},
 		methods: {
 			getLesson(){
-				this.$u.get('/api/get_course',{
+				this.$u.get('/api/get_course_info',{
 					"campus_id":1,
-					"team_id":this.classId
+					"team_id":this.classId,
+					"date":"2021-01-25"
 				}).then(e =>{
 					let lessonAry = e.data;
 					this.sen_lesson = lessonAry.filter((item => item.course_type == 1));

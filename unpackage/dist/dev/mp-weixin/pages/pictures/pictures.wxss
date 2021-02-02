@@ -1,0 +1,22 @@
+
+.contentarea{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	padding: 20rpx;
+}
+.photo{
+	padding: 10rpx 30rpx 10rpx 30rpx;
+}
+.image_style{
+	width: 170rpx;
+	height: 170rpx;
+}
+
+

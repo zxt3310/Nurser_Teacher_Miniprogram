@@ -49,7 +49,9 @@
 	padding: 10rpx 30rpx 10rpx 30rpx;
 }
 .image_style{
-	width: 160rpx;
-	height: 160rpx;
+	width: 170rpx;
+	height: 170rpx;
+}
+.photo_containor{
 }
 

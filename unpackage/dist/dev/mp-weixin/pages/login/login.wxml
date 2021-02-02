@@ -1,0 +1,1 @@
+<view class="align-center justify-center"><view><button type="default" data-event-opts="{{[['tap',[['toTeacher',['$event']]]]]}}" bindtap="__e">教师端</button></view><view><button type="default" data-event-opts="{{[['tap',[['toParent',['$event']]]]]}}" bindtap="__e">家长端</button></view></view>

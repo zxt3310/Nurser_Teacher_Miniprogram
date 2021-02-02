@@ -3671,7 +3671,7 @@ scroll-view.cu-steps .cu-item {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
-	padding: 20rpx 70rpx;
+	padding: 20rpx 0rpx;
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;

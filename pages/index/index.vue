@@ -20,17 +20,17 @@
 		<view class="padding">
 			<text>班级</text>
 			<view class="classItem" v-for="item in childClass" :key="item.id">
-				<view class="align-center">
+				<view class="align-center text-center" style="width: 33%;">
 					<image src="../../static/logo.png" mode=""></image>
 					<view>{{item.nickname}}</view>
 				</view>
-				<view class="flex-direction align-center text-center">
+				<view class="flex-direction align-center text-center" style="width: 33%;">
 					<view class="">{{item.name}}</view>
 					<view class="text-sm">
 						课程进度
 					</view>
 				</view>
-				<view class="" @click="prepareLesson(item.id)">
+				<view class="flex-direction align-center text-center" @click="prepareLesson(item.id)" style="width: 33%;">
 					<image src="../../static/cc-copy.png" style="width: 45upx;height: 45upx;" mode=""></image>
 					<view class="text-sm">
 						备课
@@ -104,7 +104,7 @@
 				uni.navigateTo({
 					url:'../photos/photos?classes=' + JSON.stringify(this.childClass)
 				})
-			}
+			},
 		}
 	}
 </script>
@@ -151,7 +151,7 @@
 	
 	.classItem{
 		display: flex;
-		padding: 20upx 70upx;
+		padding: 20upx 0upx;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;

@@ -81,6 +81,7 @@
 			play(){
 				if(this.videos.length>0){
 					this.curVideo = this.videos.shift();
+					console.log(this.curVideo.url);
 				}
 			},
 			playError(e){
