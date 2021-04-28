@@ -198,7 +198,6 @@ var _default =
   },
   onLoad: function onLoad() {
     uni.hideTabBar();
-    setInterval();
   },
   methods: {
     subscribe: function subscribe() {

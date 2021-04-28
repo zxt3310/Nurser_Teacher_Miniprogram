@@ -1,6 +1,12 @@
 <template>
 	<view>
-		<video  id="myVideo" :src="curVideo.url" :direction="90" autoplay="true" @ended="play" @error="playError" ref="myVideo">
+		<video  id="myVideo" 
+				:src="curVideo.url" 
+				:direction="90" 
+				autoplay="true" 
+				@ended="play" 
+				@error="playError"
+				ref="myVideo">
 			<!-- <cover-image src="http://81.70.232.219/uploads/material_upload/video/1.13_现场老师讲解场景图片.png"></cover-image> -->
 		</video>
 		<view class="">
@@ -96,6 +102,10 @@
 			play(){
 				if(this.videos.length>0){
 					this.curVideo = this.videos.shift();
+					if(/.*[\u4e00-\u9fa5]+.*$/.test(this.curVideo.url) || this.curVideo.url.indexOf(" ") != -1){
+						this.curVideo.url = encodeURI(this.curVideo.url);
+					}
+					
 					console.log(this.curVideo.url);
 				}
 			},

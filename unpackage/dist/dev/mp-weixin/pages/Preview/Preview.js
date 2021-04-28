@@ -221,6 +221,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -251,6 +257,10 @@ var _default =
     play: function play() {
       if (this.videos.length > 0) {
         this.curVideo = this.videos.shift();
+        if (/.*[\u4e00-\u9fa5]+.*$/.test(this.curVideo.url) || this.curVideo.url.indexOf(" ") != -1) {
+          this.curVideo.url = encodeURI(this.curVideo.url);
+        }
+
         console.log(this.curVideo.url);
       }
     },

@@ -39,7 +39,6 @@
 		},
 		onLoad() {
 			uni.hideTabBar()
-			setInterval()
 		},
 		methods: {
 			subscribe(){
