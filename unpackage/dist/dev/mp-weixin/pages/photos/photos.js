@@ -96,10 +96,10 @@ var components
 try {
   components = {
     uDropdown: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-dropdown/u-dropdown */ "uview-ui/components/u-dropdown/u-dropdown").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-dropdown/u-dropdown.vue */ 114))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-dropdown/u-dropdown */ "uview-ui/components/u-dropdown/u-dropdown").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-dropdown/u-dropdown.vue */ 138))
     },
     uDropdownItem: function() {
-      return __webpack_require__.e(/*! import() | uview-ui/components/u-dropdown-item/u-dropdown-item */ "uview-ui/components/u-dropdown-item/u-dropdown-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-dropdown-item/u-dropdown-item.vue */ 121))
+      return __webpack_require__.e(/*! import() | uview-ui/components/u-dropdown-item/u-dropdown-item */ "uview-ui/components/u-dropdown-item/u-dropdown-item").then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-dropdown-item/u-dropdown-item.vue */ 145))
     }
   }
 } catch (e) {

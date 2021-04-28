@@ -1,5 +1,17 @@
 <template>
 	<view>
+		<view class="">
+			<u-tabs-swiper
+			active-color="#716AB8"
+			ref="tabs" 
+			:list="tablist"
+			:current="current" 
+			@change="tabChange"
+			:is-scroll="false"
+			bar-width="105"
+			swiper-width="750">
+			</u-tabs-swiper>
+		</view>
 		<view class="u-page padding">
 			<view class="" v-for="(unit,key) in photos" :key="key" v-if="unit.length>0">
 				<view class="" style="margin-left: 40upx;">
@@ -24,8 +36,10 @@
 	export default {
 		data() {
 			return {
+				tablist:[{name:"课堂照"},{name:"作品照"}],
 				curPage:1,
 				photos:null,
+				current:0,
 				list:[]
 			}
 		},
@@ -34,11 +48,18 @@
 			this.fetchPhotos();
 		},
 		methods: {
+			tabChange(e){
+				this.current = e;
+				this.curPage = 1;
+				this.photos = null;
+				this.fetchPhotos();
+			},
 			fetchPhotos(){
 				this.$u.get('/api/get_student_photo',{
 					"team_id":2,
 					"student_id":1,
 					"page":this.curPage,
+					"work":this.current
 				}).then(e=>{
 					this.photos = operateDate.operateData(e.data,this.photos);
 					console.log(this.photos);

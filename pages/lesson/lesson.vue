@@ -8,7 +8,7 @@
 				<view class="text-sm">当前进度 Level 1</view>
 			</view>
 		</view>
-		<view class="">
+		<!-- <view class="">
 			<u-subsection 
 			@change="subsectionChange" 
 			:bold="true" 
@@ -17,7 +17,7 @@
 			 mode="button" 
 			:list="['今天', '明天', '后天']">
 			</u-subsection>
-		</view>
+		</view> -->
 		<view class="">
 			<u-tabs-swiper
 			active-color="#716AB8"

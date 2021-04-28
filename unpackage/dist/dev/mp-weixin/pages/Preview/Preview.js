@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uTabsSwiper: function() {
-      return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 107))
+      return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 131))
     }
   }
 } catch (e) {
@@ -208,6 +208,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -222,6 +235,7 @@ var _default =
       current: 2,
       //播放列表
       videos: [],
+      guidances: [],
       curVideo: {},
       curIndex: 0 };
 
@@ -230,6 +244,7 @@ var _default =
     this.playlistId = param.listid;
     this.current = parseInt(param.tabidx);
     this.getVideoData();
+    this.getGuidanceData();
     console.log(this.playlistId);
   },
   methods: {
@@ -274,6 +289,13 @@ var _default =
             value: '0-0' } });
 
 
+      });
+    },
+    getGuidanceData: function getGuidanceData() {var _this2 = this;
+      this.$u.get('/api/get_course_guidance_keynote', {
+        "play_list_id": this.playlistId }).
+      then(function (e) {
+        _this2.guidances = e.data;
       });
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

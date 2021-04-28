@@ -4,13 +4,25 @@
 	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path":"pages/login/login"
+			"path":"pages/login/login",
+			"style" :
+			{
+				"navigationBarTitleText":"登录"
+			}
 		},
 		{
-			"path": "pages/index/index"
+			"path": "pages/index/index",
+			"style" :
+			{
+				"navigationBarTitleText":"首页"
+			}
 		},
 		{
-			"path":"pages/lesson/lesson"
+			"path":"pages/lesson/lesson",
+			"style" :
+			{
+				"navigationBarTitleText":"备课"
+			}
 		}
 	    ,
 		{
@@ -31,13 +43,25 @@
             
         }
         ,{
-            "path" : "pages/parentIndex/parentIndex"
+            "path" : "pages/parentIndex/parentIndex",
+			"style" :
+			{
+				"navigationBarTitleText":"首页"
+			}
         },
 		{
-			"path":"pages/pictures/pictures"
+			"path":"pages/pictures/pictures",
+			"style" :
+			{
+				"navigationBarTitleText":"相册"
+			}
 		},
 		{
-			"path":"pages/parentsInfo/parentsInfo"
+			"path":"pages/parentsInfo/parentsInfo",
+			"style" :
+			{
+				"navigationBarTitleText":"个人信息"
+			}
 		}
     ],
 	"tabBar":{

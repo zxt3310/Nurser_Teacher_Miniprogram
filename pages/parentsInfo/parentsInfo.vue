@@ -5,7 +5,7 @@
 				<image src="../../static/Cat_in_love.png" style="width: 160upx; height: 160upx; border-radius: 80upx;" mode=""></image>
 				<view class="padding">
 					<view class="">
-						xx的妈妈
+						王五的妈妈
 					</view>
 					<view class="margin-top">
 						小朋友已学习课程1年6个月

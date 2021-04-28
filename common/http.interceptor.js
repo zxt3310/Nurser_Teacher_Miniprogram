@@ -62,6 +62,10 @@ const install = (Vue, vm) => {
 				} else {
 					// 如果返回false，则会调用Promise的reject回调，
 					// 并将进入this.$u.post(url).then().catch(res=>{})的catch回调中，res为服务端的返回值
+					uni.showToast({
+						icon:"none",
+						title:res.msg
+					})
 					return false;
 				}
 			}

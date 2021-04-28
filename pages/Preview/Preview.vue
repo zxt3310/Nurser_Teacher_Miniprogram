@@ -18,15 +18,28 @@
 		<swiper class="swiper" :indicator-dots="false" :autoplay="false" :current="current" @change="swiperChange">
 			<swiper-item>
 				<scroll-view scroll-y="true">
-					<view>
-						
+					<view style="padding: 15px;" v-for="(item,index) in guidances" :key="index">
+						<view class="">
+							步骤：{{item.first_group + "-" + item.second_group + "-" + item.third_group}}
+						</view>
+						<view class="">
+							教学指导：{{item.guidance}}
+						</view>
 					</view>
 				</scroll-view>
 			</swiper-item>
 			<swiper-item>
 				<scroll-view scroll-y="true">
-					<view>
-						
+					<view style="padding: 15px;" v-for="(item,index) in guidances" :key="index">
+						<view class="">
+							步骤：{{item.first_group + "-" + item.second_group + "-" + item.third_group}}
+						</view>
+						<view class="">
+							语言点：{{item.keynote}}
+						</view>
+						<view class="">
+							例句：{{item.keynote_eg}}
+						</view>
 					</view>
 				</scroll-view>
 			</swiper-item>
@@ -67,6 +80,7 @@
 				current: 2,
 				//播放列表
 				videos:[],
+				guidances:[],
 				curVideo:{},
 				curIndex:0,
 			}
@@ -75,6 +89,7 @@
 				this.playlistId = param.listid;
 				this.current = parseInt(param.tabidx);
 				this.getVideoData();
+				this.getGuidanceData();
 				console.log(this.playlistId);
 			},
 		methods: {
@@ -120,8 +135,14 @@
 						}
 					})
 				});
+			},
+			getGuidanceData(){
+				this.$u.get('/api/get_course_guidance_keynote',{
+					"play_list_id":this.playlistId
+				}).then(e =>{
+					this.guidances = e.data;
+				})
 			}
-			
 		}
 	}
 </script>
