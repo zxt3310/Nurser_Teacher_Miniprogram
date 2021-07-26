@@ -1,14 +1,13 @@
 <template>
 	<view>
-		<video  id="myVideo" 
+		<!-- <video  id="myVideo" 
 				:src="curVideo.url" 
 				:direction="90" 
 				autoplay="true" 
 				@ended="play" 
 				@error="playError"
 				ref="myVideo">
-			<!-- <cover-image src="http://81.70.232.219/uploads/material_upload/video/1.13_现场老师讲解场景图片.png"></cover-image> -->
-		</video>
+		</video> -->
 		<view class="">
 			<u-tabs-swiper
 			active-color="#716AB8"
@@ -21,7 +20,7 @@
 			swiper-width="750">
 			</u-tabs-swiper>
 		</view>
-		<swiper class="swiper" :indicator-dots="false" :autoplay="false" :current="current" @change="swiperChange">
+		<swiper class="swiper" :style="'height:' + swipe_height + 'px;'" :indicator-dots="false" :autoplay="false" :current="current" @change="swiperChange">
 			<swiper-item>
 				<scroll-view scroll-y="true">
 					<view style="padding: 15px;" v-for="(item,index) in guidances" :key="index">
@@ -34,7 +33,7 @@
 					</view>
 				</scroll-view>
 			</swiper-item>
-			<swiper-item>
+			<!-- <swiper-item>
 				<scroll-view scroll-y="true">
 					<view style="padding: 15px;" v-for="(item,index) in guidances" :key="index">
 						<view class="">
@@ -67,7 +66,7 @@
 						</view>
 					</radio-group>
 				</scroll-view>
-			</swiper-item>
+			</swiper-item> -->
 		</swiper>
 	</view>
 </template>
@@ -80,8 +79,8 @@
 				videoAry:[],
 				tablist:[
 					{name:"教学指导"},
-					{name:"语言点"},
-					{name:"视频列表"}
+					// {name:"语言点"},
+					// {name:"视频列表"}
 				],
 				current: 2,
 				//播放列表
@@ -89,9 +88,12 @@
 				guidances:[],
 				curVideo:{},
 				curIndex:0,
+				swipe_height:0
 			}
 		},
 		onLoad(param) {
+				let h = uni.getSystemInfoSync().windowHeight;
+				this.swipe_height = 600 / 667 * h;
 				this.playlistId = param.listid;
 				this.current = parseInt(param.tabidx);
 				this.getVideoData();
@@ -162,7 +164,7 @@
 		width: 100%;
 	}
 	.swiper{
-		height: 400px;
+		line-height: 150%;
 		width: 100%;
 	}
 	scroll-view{

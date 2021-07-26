@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uTabsSwiper: function() {
-      return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 131))
+      return Promise.all(/*! import() | uview-ui/components/u-tabs-swiper/u-tabs-swiper */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uview-ui/components/u-tabs-swiper/u-tabs-swiper")]).then(__webpack_require__.bind(null, /*! @/uview-ui/components/u-tabs-swiper/u-tabs-swiper.vue */ 139))
     }
   }
 } catch (e) {
@@ -226,7 +226,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 var _default =
 {
   data: function data() {
@@ -234,19 +233,22 @@ var _default =
       playlistId: 0,
       videoAry: [],
       tablist: [
-      { name: "教学指导" },
-      { name: "语言点" },
-      { name: "视频列表" }],
-
+      { name: "教学指导" }
+      // {name:"语言点"},
+      // {name:"视频列表"}
+      ],
       current: 2,
       //播放列表
       videos: [],
       guidances: [],
       curVideo: {},
-      curIndex: 0 };
+      curIndex: 0,
+      swipe_height: 0 };
 
   },
   onLoad: function onLoad(param) {
+    var h = uni.getSystemInfoSync().windowHeight;
+    this.swipe_height = 600 / 667 * h;
     this.playlistId = param.listid;
     this.current = parseInt(param.tabidx);
     this.getVideoData();

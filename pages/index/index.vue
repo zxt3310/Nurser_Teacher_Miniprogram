@@ -41,7 +41,7 @@
 		<view class="line"/>
 		<view class="padding">
 			<text>实用功能</text>
-			<view class="u-flex justify-between">
+			<view class="u-flex">
 				<view class="icon-func" @click="goToPhotos">
 					<image src="../../static/photo.png" mode=""></image>
 					<text>相册</text>
@@ -50,10 +50,10 @@
 					<image src="../../static/notify.png" mode=""></image>
 					<text>通知</text>
 				</view>
-				<view class="icon-func">
+				<!-- <view class="icon-func">
 					<image src="../../static/setting.png" mode=""></image>
 					<text>设置</text>
-				</view>
+				</view> -->
 			</view>
 		</view>
 	</view>

@@ -1,5 +1,5 @@
 
-let lib = ["本周","1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+let lib = ["本周","12月","11月","10月","9月","8月","7月","6月","5月","4月","3月","2月","1月"];
 
 var operateData = (data,curPhoto)=>{
 	let today = new Date();
@@ -8,7 +8,7 @@ var operateData = (data,curPhoto)=>{
 	//最后一天
 	let curLastWeekDay = getLastOfCurWeek();
 	
-	let resDic = {"本周":[],"1月":[],"2月":[],"3月":[],"4月":[],"5月":[],"6月":[],"7月":[],"8月":[],"9月":[],"10月":[],"11月":[],"12月":[]};
+	let resDic = {"本周":[],"12月":[],"11月":[],"10月":[],"9月":[],"8月":[],"7月":[],"6月":[],"5月":[],"4月":[],"3月":[],"2月":[],"1月":[]};
 	
 	if(curPhoto != null){
 		resDic = curPhoto;
@@ -18,7 +18,7 @@ var operateData = (data,curPhoto)=>{
 		//小程序中 不识别2020-01-25  正确格式 2020/01/25
 		let pic_date = new Date(unit.created_at.replace(/-/g,'/'));
 		// if(pic_date.getYear() == today.getYear()){
-			let month = pic_date.getMonth() + 1;
+			let month = 12 - pic_date.getMonth();
 			resDic[lib[month]].push(unit);
 			if(curLastWeekDay > pic_date > curFirstWeekDay){
 				resDic[0].push(unit);

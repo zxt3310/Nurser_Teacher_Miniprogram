@@ -7,7 +7,8 @@
     "pages/photos/photos",
     "pages/parentIndex/parentIndex",
     "pages/pictures/pictures",
-    "pages/parentsInfo/parentsInfo"
+    "pages/parentsInfo/parentsInfo",
+    "pages/audios/audios"
   ],
   "subPackages": [],
   "window": {
@@ -33,10 +34,15 @@
         "text": "相册"
       },
       {
+        "pagePath": "pages/audios/audios",
+        "text": "语音"
+      },
+      {
         "pagePath": "pages/parentsInfo/parentsInfo",
         "text": "我的"
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

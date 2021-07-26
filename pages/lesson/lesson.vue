@@ -39,12 +39,12 @@
 							<view @click="prepareLesson(item.play_list_id,0)">
 								教师指导
 							</view>
-							<view @click="prepareLesson(item.play_list_id,1)">
+							<!-- <view @click="prepareLesson(item.play_list_id,1)">
 								语言点
 							</view>
 							<view @click="prepareLesson(item.play_list_id,2)">
 								播放视频
-							</view>
+							</view> -->
 						</view>
 					</view>
 				</swiper-item>
@@ -55,12 +55,12 @@
 							<view @click="prepareLesson(item.play_list_id,0)">
 								教师指导
 							</view>
-							<view @click="prepareLesson(item.play_list_id,1)">
+							<!-- <view @click="prepareLesson(item.play_list_id,1)">
 								语言点
 							</view>
 							<view @click="prepareLesson(item.play_list_id,2)">
 								播放视频
-							</view>
+							</view> -->
 						</view>
 					</view>
 				</swiper-item>
@@ -180,8 +180,7 @@
 		border-radius: 12upx;
 	}
 	.item text{
-		width: 18%;
-		text-align: center;
+		width: 50%;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;

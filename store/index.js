@@ -22,6 +22,14 @@ const store = new Vuex.Store({
 						pagePath:"/pages/pictures/pictures"
 					},
 					{
+						iconPath: "kefu-ermai",
+						selectedIconPath: "server-fill",
+						text: '语音',
+						isDot: true,
+						customIcon: false,
+						pagePath:"/pages/audios/audios"
+					},
+					{
 						iconPath: "account",
 						selectedIconPath: "account-fill",
 						text: '我的',

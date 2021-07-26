@@ -63,6 +63,15 @@
 				"navigationBarTitleText":"个人信息"
 			}
 		}
+        ,{
+            "path" : "pages/audios/audios",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "课堂语音",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar":{
 		"color":"#000000",
@@ -80,6 +89,10 @@
 			{
 				"pagePath":"pages/pictures/pictures",
 				"text":"相册"
+			},
+			{
+				"pagePath":"pages/audios/audios",
+				"text":"语音"
 			},
 			{
 				"pagePath":"pages/parentsInfo/parentsInfo",
