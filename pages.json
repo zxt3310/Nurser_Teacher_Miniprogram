@@ -72,6 +72,24 @@
             }
             
         }
+        ,{
+            "path" : "pages/notification/notification",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "班级通知",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/message/message",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "消息通知",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar":{
 		"color":"#000000",

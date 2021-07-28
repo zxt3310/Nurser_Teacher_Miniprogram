@@ -46,7 +46,7 @@
 					<image src="../../static/photo.png" mode=""></image>
 					<text>相册</text>
 				</view>
-				<view class="icon-func">
+				<view class="icon-func" @click="goToNotify">
 					<image src="../../static/notify.png" mode=""></image>
 					<text>通知</text>
 				</view>
@@ -105,6 +105,11 @@
 					url:'../photos/photos?classes=' + JSON.stringify(this.childClass)
 				})
 			},
+			goToNotify(){
+				uni.navigateTo({
+					url:"../notification/notification"
+				})
+			}
 		}
 	}
 </script>

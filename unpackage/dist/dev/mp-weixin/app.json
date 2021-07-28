@@ -8,7 +8,9 @@
     "pages/parentIndex/parentIndex",
     "pages/pictures/pictures",
     "pages/parentsInfo/parentsInfo",
-    "pages/audios/audios"
+    "pages/audios/audios",
+    "pages/notification/notification",
+    "pages/message/message"
   ],
   "subPackages": [],
   "window": {
@@ -43,6 +45,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }

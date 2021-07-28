@@ -258,11 +258,11 @@ var _default =
 
   },
   methods: {
-    getLesson: function getLesson() {var _this = this;
+    getLesson: function getLesson(date) {var _this = this;
       this.$u.get('/api/get_course_info', {
         "campus_id": 1,
         "team_id": this.classId,
-        "date": "2021-01-25" }).
+        "date": date }).
       then(function (e) {
         var lessonAry = e.data;
         _this.sen_lesson = lessonAry.filter(function (item) {return item.course_type == 1;});
@@ -288,7 +288,9 @@ var _default =
 
   onLoad: function onLoad(param) {
     this.classId = param.lesson;
-    this.getLesson();
+    var date = "";
+
+    this.getLesson(date);
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

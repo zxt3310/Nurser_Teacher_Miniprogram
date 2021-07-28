@@ -13,7 +13,7 @@
 				</view>
 			</view>
 			<view class="padding">
-				<view class="flex padding align-center justify-between">
+				<view class="flex padding align-center justify-between" @click="goToMessage">
 					<view class="">
 						消息列表
 					</view>
@@ -57,7 +57,11 @@
 			this.list = this.$store.state.tabList;
 		},
 		methods: {
-			
+			goToMessage(){
+				uni.navigateTo({
+					url:"../message/message"
+				})
+			}
 		}
 	}
 </script>

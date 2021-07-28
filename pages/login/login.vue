@@ -60,9 +60,13 @@
 					"user":this.info.account,
 					"passwd":this.info.password
 				}).then(e => {
-					uni.redirectTo({
-						url: "../index/index"
-					})
+					if(e.code == 0){
+						let teamId = e.data.team_id;
+						uni.setStorageSync("teamid",teamId);
+						uni.redirectTo({
+							url: "../index/index"
+						})
+					}
 				});
 			},
 			toParent(e) {
@@ -81,11 +85,16 @@
 							"phone":"123456",
 							"wxopenid":res.code
 						}).then(e => {
-							console.log(e);
+							if(e.code == 0){
+								uni.setStorageSync("student",e.data);
+								uni.switchTab({
+									url:'../parentIndex/parentIndex'
+								})
+							}
 						})
-						uni.switchTab({
-							url:'../parentIndex/parentIndex'
-						})
+					},
+					fail(e) {
+						console.log("登录失败");
 					}
 				})
 			},
@@ -96,9 +105,12 @@
 					"passwd":this.info.password
 				}).then(e =>{
 					if(e.code == 0){
-						uni.redirectTo({
-							url: "../index/index"
-						})
+						let teamId = e.data.team_id;
+						console.log(teamId)
+						uni.setStorageSync("teamid",teamId);
+						// uni.redirectTo({
+						// 	url: "../index/index"
+						// })
 					}
 				});
 			}

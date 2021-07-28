@@ -1,0 +1,10 @@
+
+.notify_content{
+	padding: 15px;
+}
+.notify_content_unit{
+	position: relative;
+	margin: 10px 0;
+	line-height: 150%;
+}
+

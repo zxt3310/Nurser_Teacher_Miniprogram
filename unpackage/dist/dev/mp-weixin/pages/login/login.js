@@ -219,9 +219,13 @@ var _default =
         "user": this.info.account,
         "passwd": this.info.password }).
       then(function (e) {
-        uni.redirectTo({
-          url: "../index/index" });
+        if (e.code == 0) {
+          var teamId = e.data.team_id;
+          uni.setStorageSync("teamid", teamId);
+          uni.redirectTo({
+            url: "../index/index" });
 
+        }
       });
     },
     toParent: function toParent(e) {var _this = this;
@@ -240,11 +244,16 @@ var _default =
             "phone": "123456",
             "wxopenid": res.code }).
           then(function (e) {
-            console.log(e);
-          });
-          uni.switchTab({
-            url: '../parentIndex/parentIndex' });
+            if (e.code == 0) {
+              uni.setStorageSync("student", e.data);
+              uni.switchTab({
+                url: '../parentIndex/parentIndex' });
 
+            }
+          });
+        },
+        fail: function fail(e) {
+          console.log("登录失败");
         } });
 
     },
@@ -255,9 +264,12 @@ var _default =
         "passwd": this.info.password }).
       then(function (e) {
         if (e.code == 0) {
-          uni.redirectTo({
-            url: "../index/index" });
-
+          var teamId = e.data.team_id;
+          console.log(teamId);
+          uni.setStorageSync("teamid", teamId);
+          // uni.redirectTo({
+          // 	url: "../index/index"
+          // })
         }
       });
     } } };exports.default = _default;
