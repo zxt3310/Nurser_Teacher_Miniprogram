@@ -1,0 +1,6 @@
+
+.header{
+	font-size: 50rpx;
+	margin-top: 80rpx;
+}
+

@@ -41,6 +41,9 @@
 				</view>
 				<u-line hair-line="false" color="#909090"></u-line>
 			</view>
+			<view class="lg_btn" @click="logout">
+				注销账号
+			</view>
 		</view>
 		<u-tabbar v-model="current" :list="list" active-color="blue" inactive-color="#606266"></u-tabbar>
 	</view>
@@ -57,6 +60,19 @@
 			this.list = this.$store.state.tabList;
 		},
 		methods: {
+			logout(){
+				uni.showModal({
+					content:"是否退出？",
+					success: (e) => {
+						if(e.confirm){
+							uni.clearStorageSync();
+							uni.switchTab({
+								url:"../login/login"
+							})
+						}
+					}
+				})
+			},
 			goToMessage(){
 				uni.navigateTo({
 					url:"../message/message"
@@ -69,4 +85,10 @@
 <style>
 	@import "/colorui/main.css";
 	@import "/colorui/icon.css";
+	.lg_btn{
+		text-align: center; 
+		color: red; 
+		font-size: 18px;
+		
+	}
 </style>

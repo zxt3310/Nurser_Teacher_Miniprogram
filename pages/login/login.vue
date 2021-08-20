@@ -1,23 +1,26 @@
 <template>
-	<view class="align-center justify-center" style="padding:0 15px">
+	<view class="align-center justify-center" style="padding:0 25px">
+		<view class="header">
+			欢迎登陆 Lingo
+		</view>
 		<view class="" v-if="isTeacher == 1">
 			<u-form :model="info" ref="uForm">
-				<u-form-item label="账号"> <u-input v-model="info.account"></u-input> </u-form-item>
-				<u-form-item label="密码"> <u-input v-model="info.password"></u-input> </u-form-item>
+				<u-form-item> <u-input v-model="info.account" placeholder="请输入账号" placeholderStyle="font-size:18px;"></u-input> </u-form-item>
+				<u-form-item> <u-input v-model="info.password" placeholder="请输入密码"></u-input> </u-form-item>
 			</u-form>
-			<button type="default" @click="toTeacher">登录</button>
+			<button style="background-color: #F9DF87; color: white;margin-top: 20px;" type="default" @click="toTeacher">登录</button>
 		</view>
 
 		<view class="" v-else>
 			<u-form :model="info" ref="uForm">
 				<u-form-item label="手机"> <u-input v-model="info.mobile"></u-input> </u-form-item>
 			</u-form>
-			<button type="default" @click="toParent">登录</button>
+			<button style="background-color: #F9DF87;color: white;margin-top: 20px;" type="default" @click="toParent">登录</button>
 		</view>
-		<view class="" style="padding: 20px; display: flex;justify-content: center;">
+		<view class="" style="padding: 20px; display: flex;justify-content: space-around; margin-top: 20px;">
 			<radio-group class="" @change="switchStatus">
-				<label class="radio"><radio class="radio" :checked="true" value="1" :disabled="false" color="#716AB8"/>教师登录</label>
-				<label class="radio" style="margin-left: 20px;"><radio class="radio" :checked="false" value="0" :disabled="false" color="#716AB8"/>家长登录</label>	
+				<label class="radio"><radio class="radio" :checked="true" value="1" :disabled="false" color="#F4C438"/>教师登录</label>
+				<label class="radio" style="margin-left: 80px;"><radio class="radio" :checked="false" value="0" :disabled="false" color="#F4C438"/>家长登录</label>	
 			</radio-group>
 		</view>
 		<!-- <button @click="subscribe">订阅</button>
@@ -30,6 +33,7 @@
 		data() {
 			return {
 				info:{
+					style:{"font-size":"30px"},
 					account:"2020-2",
 					password:"123456",
 					mobile:"13800138000"
@@ -38,7 +42,20 @@
 			}
 		},
 		onLoad() {
-			uni.hideTabBar()
+			uni.hideTabBar();
+			let student = uni.getStorageSync("student");
+			if(student){
+				uni.switchTab({
+					url:'../parentIndex/parentIndex'
+				})
+			}
+			let team = uni.getStorageSync("teamid");
+			if(team){
+				uni.redirectTo({
+					url: "../index/index"
+				})
+			}
+			
 		},
 		methods: {
 			subscribe(){
@@ -56,6 +73,7 @@
 				this.isTeacher = parseInt(e.detail.value);
 			},
 			toTeacher() {
+				uni.clearStorageSync();
 				this.$u.get('/api/user_login',{
 					"user":this.info.account,
 					"passwd":this.info.password
@@ -71,6 +89,7 @@
 			},
 			toParent(e) {
 				console.log(e)
+				uni.clearStorageSync();
 				if(this.info.mobile.length < 11){
 					uni.showToast({
 						icon:"none",
@@ -113,10 +132,14 @@
 						// })
 					}
 				});
-			}
+			},
 		}
 	}
 </script>
 
 <style>
+	.header{
+		font-size: 50upx;
+		margin-top: 80upx;
+	}
 </style>

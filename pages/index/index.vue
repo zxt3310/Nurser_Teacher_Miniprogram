@@ -17,20 +17,20 @@
 				保持微笑，用包容心对待每一位小朋友~
 			</view>
 		</view>
-		<view class="padding">
+		<view class="padding" style="flex:2;">
 			<text>班级</text>
-			<view class="classItem" v-for="item in childClass" :key="item.id">
+			<view class="classItem">
 				<view class="align-center text-center" style="width: 33%;">
 					<image src="../../static/logo.png" mode=""></image>
-					<view>{{item.nickname}}</view>
+					<view>{{childClass.nickname}}</view>
 				</view>
 				<view class="flex-direction align-center text-center" style="width: 33%;">
-					<view class="">{{item.name}}</view>
+					<view class="">{{childClass.level}}</view>
 					<view class="text-sm">
-						课程进度
+						班级水平
 					</view>
 				</view>
-				<view class="flex-direction align-center text-center" @click="prepareLesson(item.id)" style="width: 33%;">
+				<view class="flex-direction align-center text-center" @click="prepareLesson(childClass.id)" style="width: 33%;">
 					<image src="../../static/cc-copy.png" style="width: 45upx;height: 45upx;" mode=""></image>
 					<view class="text-sm">
 						备课
@@ -39,7 +39,7 @@
 			</view>
 		</view>
 		<view class="line"/>
-		<view class="padding">
+		<view class="padding" style="flex: 1;">
 			<text>实用功能</text>
 			<view class="u-flex">
 				<view class="icon-func" @click="goToPhotos">
@@ -50,10 +50,10 @@
 					<image src="../../static/notify.png" mode=""></image>
 					<text>通知</text>
 				</view>
-				<!-- <view class="icon-func">
-					<image src="../../static/setting.png" mode=""></image>
-					<text>设置</text>
-				</view> -->
+				<view class="icon-func" style="margin-left: 80px;" @click="logout">
+					<image src="../../static/logout.png" mode=""></image>
+					<text>注销</text>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -76,10 +76,19 @@
 							nickname:"幼2班",
 							name:"Level 2",
 						}
-					]
+					],
+					classId:0
 				}
 		},
+		onShow() {
+			wx.hideHomeButton({
+				success: function () {
+					console.log("hide home success");
+				},
+			});
+		},
 		onLoad() {
+			this.classId = uni.getStorageSync("teamid");
 			this.getClassInfo();
 		},
 		onReady(){
@@ -92,11 +101,11 @@
 				})
 			},
 			getClassInfo(){
-				this.$u.get('/api/get_team',{
-					campus_id:1
+				this.$u.get('/api/get_team_info',{
+					team_id:this.classId
 				}).then(e =>{
 					if(e.code == 0){
-						this.childClass = e.data;
+						this.childClass = e.data[0];
 					}
 				});
 			},
@@ -109,6 +118,15 @@
 				uni.navigateTo({
 					url:"../notification/notification"
 				})
+			},
+			logout(){
+				uni.clearStorageSync();
+				uni.switchTab({
+					url:"../login/login",
+					fail(e) {
+						console.log(e)
+					}
+				})
 			}
 		}
 	}
@@ -119,7 +137,8 @@
 	.content {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		width: 100%;
+		height: 100%;
 	}
 
 	.logo {

@@ -12,7 +12,7 @@
 						</view>
 						<view class="info-context">
 							<view>{{item.title.length!=0?item.title:' '}}</view>
-							<view style="font-size: 12px;">得分:{{item.score}}</view>
+							<!-- <view style="font-size: 12px;">得分:{{item.score}}</view> -->
 						</view>
 						<view style="position: absolute; right: 10px; bottom: 10px; font-size: 11px; color: #9e9e9e;">
 							时长：{{item.voice_time}}s

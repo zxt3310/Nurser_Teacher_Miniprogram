@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "备课",
   "usingComponents": {
+    "u-dropdown": "/uview-ui/components/u-dropdown/u-dropdown",
+    "u-dropdown-item": "/uview-ui/components/u-dropdown-item/u-dropdown-item",
     "u-tabs-swiper": "/uview-ui/components/u-tabs-swiper/u-tabs-swiper"
   }
 }

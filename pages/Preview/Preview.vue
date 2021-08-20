@@ -25,7 +25,8 @@
 				<scroll-view scroll-y="true">
 					<view style="padding: 15px;" v-for="(item,index) in guidances" :key="index">
 						<view class="">
-							步骤：{{item.first_group + "-" + item.second_group + "-" + item.third_group}}
+							<!-- 步骤：{{item.first_group + "-" + item.second_group + "-" + item.third_group}} -->
+							{{item.group_name}}
 						</view>
 						<view class="">
 							教学指导：{{item.guidance}}
@@ -76,6 +77,7 @@
 		data() {
 			return {
 				playlistId:0,
+				course_detail_id:0,
 				videoAry:[],
 				tablist:[
 					{name:"教学指导"},
@@ -88,19 +90,21 @@
 				guidances:[],
 				curVideo:{},
 				curIndex:0,
-				swipe_height:0
+				swipe_height:0,
 			}
 		},
 		onLoad(param) {
 				let h = uni.getSystemInfoSync().windowHeight;
 				this.swipe_height = 600 / 667 * h;
 				this.playlistId = param.listid;
+				this.course_detail_id = param.course_detail_id;
 				this.current = parseInt(param.tabidx);
 				this.getVideoData();
-				this.getGuidanceData();
+				// this.getGuidanceData();
 				console.log(this.playlistId);
 			},
 		methods: {
+			
 			play(){
 				if(this.videos.length>0){
 					this.curVideo = this.videos.shift();
@@ -141,18 +145,42 @@
 					"play_list_id":this.playlistId
 				}).then(e => {
 					this.videoAry = e.data;
-					this.switchVideo({
-						detail:{
-							value:'0-0'
-						}
-					})
+					this.getGuidanceData(e.data);
+					// this.switchVideo({
+					// 	detail:{
+					// 		value:'0-0'
+					// 	}
+					// })
 				});
 			},
-			getGuidanceData(){
+			getGuidanceData(videoAry){
 				this.$u.get('/api/get_course_guidance_keynote',{
-					"play_list_id":this.playlistId
+					"play_list_id":this.playlistId,
+					"course_detail_id":this.course_detail_id
 				}).then(e =>{
-					this.guidances = e.data;
+					let tmp = e.data;
+					for(let keynote of tmp){
+						let first = keynote.first_group;
+						let second = keynote.second_group;
+						let third = keynote.third_group;
+						for(let group_1 of videoAry){
+							if(first == group_1.first_group){
+								for(let group_2 of group_1.play_groups){
+									if(group_2.second_group == second){
+										console.log("12ok")
+										for(let group_3 of group_2.plays){
+											if(group_3.third_group == third){
+												console.log("3 ok")
+												keynote.group_name = group_3.group_name;
+												console.log(group_3.group_name)
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+					this.guidances = tmp;
 				})
 			}
 		}

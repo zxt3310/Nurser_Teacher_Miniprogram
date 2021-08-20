@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<u-dropdown ref="dropDown" class="u-dropdown" menuIcon="arrow-down-fill">
+		<!-- <u-dropdown ref="dropDown" class="u-dropdown" menuIcon="arrow-down-fill">
 			<u-dropdown-item v-model="curClass" :title="classMap[curClass].nickname" :options="classes" @change="changeClass"></u-dropdown-item>
-		</u-dropdown>
+		</u-dropdown> -->
 		<view class="header">
 			<image src="../../static/Cat_in_love.png" mode=""></image>
 			<view class="">
@@ -43,30 +43,31 @@
 			}
 		},
 		onLoad(e) {
+			let classId = uni.getStorageSync("teamid");
 			let classes = JSON.parse(e.classes);
 			//console.log(classes);
-			this.initClass(classes);
-			this.getPhotos(classes[0].id);
-			this.curClass = classes[0].id;
+			// this.initClass(classes);
+			this.getPhotos(classId);
+			this.curClass = classId;
 		},
 		methods: {
-			initClass(classes){
-				let ary = [];
-				let classmap = {};
-				for(let item of classes){
-					ary.push({
-						label:item.nickname,
-						value:item.id
-						// name:item.name,
-						// level:item.level,
-						// coverImg:item.cover_img
-					});
-					classmap[item.id.toString()] = item;
-				}
-				console.log(classmap)
-				this.classes = ary;
-				this.classMap = classmap;
-			},
+			// initClass(classes){
+			// 	let ary = [];
+			// 	let classmap = {};
+			// 	for(let item of classes){
+			// 		ary.push({
+			// 			label:item.nickname,
+			// 			value:item.id
+			// 			// name:item.name,
+			// 			// level:item.level,
+			// 			// coverImg:item.cover_img
+			// 		});
+			// 		classmap[item.id.toString()] = item;
+			// 	}
+			// 	console.log(classmap)
+			// 	this.classes = ary;
+			// 	this.classMap = classmap;
+			// },
 			changeClass(e){
 				this.curPage = 1;
 				this.photos = null;
@@ -113,7 +114,7 @@
 		flex:1;
 	}
 	.header{
-		padding: 0upx 40upx 20upx 40upx;
+		padding: 40upx 40upx 20upx 40upx;
 		display: flex;
 		flex-direction: row;
 	}
@@ -127,6 +128,7 @@
 		display: flex;
 		flex-direction: column;
 		margin-left: 30upx;
+		
 	}
 	.contentarea{
 		display: flex;

@@ -3670,9 +3670,8 @@ scroll-view.cu-steps .cu-item {
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
 	        flex-direction: column;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
+	width: 100%;
+	height: 100%;
 }
 .logo {
 	height: 200rpx;

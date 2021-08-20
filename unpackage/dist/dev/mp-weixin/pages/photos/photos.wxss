@@ -8,7 +8,7 @@
 	        flex:1;
 }
 .header{
-	padding: 0rpx 40rpx 20rpx 40rpx;
+	padding: 40rpx 40rpx 20rpx 40rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;

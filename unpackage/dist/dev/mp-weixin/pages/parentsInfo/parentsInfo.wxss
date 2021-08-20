@@ -4597,4 +4597,9 @@ scroll-view.cu-steps .cu-item {
 .cuIcon-btn:before {
 	content: "\e601";
 }
+.lg_btn{
+	text-align: center; 
+	color: red; 
+	font-size: 18px;
+}
 

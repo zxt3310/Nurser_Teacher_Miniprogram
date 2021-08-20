@@ -11782,7 +11782,7 @@ var index = {
 var install = function install(Vue, vm) {
   // 此为自定义配置参数，具体参数见上方说明
   Vue.prototype.$u.http.setConfig({
-    baseUrl: 'http://81.70.232.219',
+    baseUrl: 'http://81.70.232.219:8080',
     loadingText: '努力加载中~',
     loadingTime: 800
     // 设置自定义头部content-type
@@ -11888,7 +11888,9 @@ var install = function install(Vue, vm) {
 /* 76 */,
 /* 77 */,
 /* 78 */,
-/* 79 */
+/* 79 */,
+/* 80 */,
+/* 81 */
 /*!****************************************************************************************!*\
   !*** /Users/zxt3310/Documents/HBuilderProjects/NurseryEducation/common/operateData.js ***!
   \****************************************************************************************/
@@ -11951,8 +11953,6 @@ var getLastOfCurWeek = function getLastOfCurWeek() {
   operateData: operateData };exports.default = _default;
 
 /***/ }),
-/* 80 */,
-/* 81 */,
 /* 82 */,
 /* 83 */,
 /* 84 */,
@@ -11997,7 +11997,25 @@ var getLastOfCurWeek = function getLastOfCurWeek() {
 /* 123 */,
 /* 124 */,
 /* 125 */,
-/* 126 */
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */
 /*!************************************************************************************************!*\
   !*** /Users/zxt3310/Documents/HBuilderProjects/NurseryEducation/uview-ui/libs/util/emitter.js ***!
   \************************************************************************************************/
@@ -12056,7 +12074,7 @@ function _broadcast(componentName, eventName, params) {
     } } };exports.default = _default;
 
 /***/ }),
-/* 127 */
+/* 145 */
 /*!********************************************************************************************************!*\
   !*** /Users/zxt3310/Documents/HBuilderProjects/NurseryEducation/uview-ui/libs/util/async-validator.js ***!
   \********************************************************************************************************/
@@ -13419,10 +13437,10 @@ Schema.warning = warning;
 Schema.messages = messages;var _default =
 
 Schema;exports.default = _default;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 128)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../../../../../Applications/HBuilderX.app/Contents/HBuilderX/plugins/uniapp-cli/node_modules/node-libs-browser/mock/process.js */ 146)))
 
 /***/ }),
-/* 128 */
+/* 146 */
 /*!********************************************************!*\
   !*** ./node_modules/node-libs-browser/mock/process.js ***!
   \********************************************************/
@@ -13453,7 +13471,7 @@ exports.binding = function (name) {
     var path;
     exports.cwd = function () { return cwd };
     exports.chdir = function (dir) {
-        if (!path) path = __webpack_require__(/*! path */ 129);
+        if (!path) path = __webpack_require__(/*! path */ 147);
         cwd = path.resolve(dir, cwd);
     };
 })();
@@ -13466,7 +13484,7 @@ exports.features = {};
 
 
 /***/ }),
-/* 129 */
+/* 147 */
 /*!***********************************************!*\
   !*** ./node_modules/path-browserify/index.js ***!
   \***********************************************/
@@ -13776,7 +13794,7 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 128)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../node-libs-browser/mock/process.js */ 146)))
 
 /***/ })
 ]]);

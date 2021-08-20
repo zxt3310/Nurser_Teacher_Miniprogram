@@ -3,11 +3,14 @@
 		<view class="header">
 			<image src="../../static/Cat_in_love.png" mode="aspectFill"></image>
 			<view class="flex flex-direction justify-between margin-left-xl">
-				<view class="text-xl">{{classInfo}}</view>
-				<view class="text-sm">学生人数10</view>
-				<view class="text-sm">当前进度 Level 1</view>
+				<view class="text-xl">{{classInfo.nickname}}</view>
+				<view class="text-sm">年级：{{classInfo.grade}}</view>
+				<view class="text-sm">进度：Level {{classInfo.level}}</view>
 			</view>
 		</view>
+		<u-dropdown>
+			<u-dropdown-item v-model="value1" :title="title" :options="options1" @change="opch"></u-dropdown-item>
+		</u-dropdown>
 		<!-- <view class="">
 			<u-subsection 
 			@change="subsectionChange" 
@@ -35,8 +38,8 @@
 				<swiper-item >
 					<view class="swiper-item">
 						<view class="item" v-for="(item,index) in sen_lesson" :key="index">
-							<text>{{item.course_name}}</text>
-							<view @click="prepareLesson(item.play_list_id,0)">
+							<text>{{item.name}} 步骤{{item.step}} 循环{{item.exposure_1}}</text>
+							<view @click="prepareLesson(item.play_list_id,0,item.course_detail_id)">
 								教师指导
 							</view>
 							<!-- <view @click="prepareLesson(item.play_list_id,1)">
@@ -51,8 +54,8 @@
 				<swiper-item>
 					<view class="swiper-item">
 						<view class="item" v-for="(item,index) in theme_lesson" :key="index">
-							<text>{{item.course_name}}</text>
-							<view @click="prepareLesson(item.play_list_id,0)">
+							<text>{{item.name}}</text>
+							<view @click="prepareLesson(item.play_list_id,0,item.course_detail_id)">
 								教师指导
 							</view>
 							<!-- <view @click="prepareLesson(item.play_list_id,1)">
@@ -100,20 +103,54 @@
 					{name:"科学"},
 					{name:"读书"},
 				],
+				value1:0,
+				title:"当前课程",
+				options1:[
+					{label:'当前课程',value:0},
+					{label:'后续课程',value:1}
+				]
 			}
 		},
 		methods: {
-			getLesson(date){
-				this.$u.get('/api/get_course_info',{
+			getClassInfo(){
+				this.$u.get('/api/get_team_info',{
+					"team_id":this.classId
+				}).then(e => {
+					this.classInfo = e.data[0];
+				});
+			},
+			opch(e){
+				if(e==0){
+					this.title = "当前课程";
+				}else{
+					this.title = "后续课程";
+				}
+			},
+			getLesson(){
+				this.$u.get('/api/get_teacher_course',{
 					"campus_id":1,
 					"team_id":this.classId,
-					"date":date
+					"course_type":0
 				}).then(e =>{
-					let lessonAry = e.data;
-					this.sen_lesson = lessonAry.filter((item => item.course_type == 1));
-					this.theme_lesson = lessonAry.filter((item =>item.course_type == 2));
-					this.classInfo = lessonAry[0].nickname;
+					if(this.value1 == 0){
+						this.sen_lesson = e.data.current_course;
+					}else{
+						this.sen_lesson = e.data.next_course;
+					}
 				});
+				
+				this.$u.get('/api/get_teacher_course',{
+					"campus_id":1,
+					"team_id":this.classId,
+					"course_type":1
+				}).then(e =>{
+					if(this.value1 == 0){
+						this.theme_lesson = e.data.current_course;
+					}else{
+						this.theme_lesson = e.data.next_course;
+					}
+				});
+				
 			},
 			tabChange(e){
 				this.current = e;
@@ -125,17 +162,16 @@
 			swiperChange(e){
 				this.current = e.detail.current;
 			},
-			prepareLesson(play_list_id,tabidx){
+			prepareLesson(play_list_id,tabidx,detail_id){
 				uni.navigateTo({
-					url:'../Preview/Preview?listid='+ play_list_id + '&tabidx=' + tabidx
+					url:'../Preview/Preview?listid='+ play_list_id + '&tabidx=' + tabidx + '&course_detail_id=' + detail_id
 				})
 			}
 		},
 		onLoad(param) {
 			this.classId = param.lesson;
-			let date = "";
-			
-			this.getLesson(date);
+			this.getLesson();
+			this.getClassInfo();
 		}
 	}
 </script>

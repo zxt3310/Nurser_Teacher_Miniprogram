@@ -1,7 +1,4 @@
 {
   "navigationBarTitleText": "班级相册",
-  "usingComponents": {
-    "u-dropdown": "/uview-ui/components/u-dropdown/u-dropdown",
-    "u-dropdown-item": "/uview-ui/components/u-dropdown-item/u-dropdown-item"
-  }
+  "usingComponents": {}
 }
